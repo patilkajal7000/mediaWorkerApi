@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const mongoString = process.env.DATABASE_URL;
-
+global.__basedir = __dirname;
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 
@@ -18,7 +18,7 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 
-const routes = require('./routes/routes');
+const routes = require('./src/routes/routes');
 
 app.use('/api', routes)
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const Model = require('../models/model');
 const router = express.Router();
-
+const controller=require('../controller/file.controller')
 //Post Method
 router.post('/post', async (req, res) => {
     const data = new Model({
@@ -79,5 +79,9 @@ router.delete('/delete/:id', async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 })
+router.post("/upload", controller.upload);
+  router.get("/files", controller.getListFiles);
+  router.get("/files/:name", controller.download);
+
 
 module.exports = router;
