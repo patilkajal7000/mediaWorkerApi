@@ -15,6 +15,8 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 const app = express();
+app.use(express.static(__basedir + '/resources/static/assets/uploads'));
+
 app.use(cors())
 app.use(express.json());
 
